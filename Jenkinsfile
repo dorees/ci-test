@@ -22,7 +22,7 @@ pipeline {
         stage('Deployment') {
             steps {
                 script { 
-                    if (env.BRANCH_NAME != 'master') {
+                    if (env.BRANCH_NAME != 'master' || env.BRANCH_NAME != 'dev') {
                         echo 'Deploy to development'
                         echo env.BRANCH_NAME
 
