@@ -8,11 +8,12 @@ pipeline {
         stage('Add WP Engine remote') {
             steps {
                 script { 
-                    if (env.BRANCH_NAME != 'master') {
-                        sh "git remote add development git@git.wpengine.com:production/developmentdog.git"
-                        sh "git remote add staging git@git.wpengine.com:production/stagingdog.git"
-                    } else {
+                    if (env.BRANCH_NAME == 'master') {
                         sh "git remote add production git@git.wpengine.com:production/devopsgroup.git"
+                    } else if (env.BRANCH_NAME == 'dev') {
+                       sh "git remote add staging git@git.wpengine.com:production/stagingdog.git"
+                    } else {
+                        sh "git remote add development git@git.wpengine.com:production/developmentdog.git"
                     }
                     sh "git remote -v"
                 }
