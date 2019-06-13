@@ -24,6 +24,7 @@ pipeline {
                 script { 
                     if (env.BRANCH_NAME != 'master' || env.BRANCH_NAME != 'dev') {
                         echo 'Deploy to development'
+                        echo env.BRANCH_NAME
 
                     } else if (env.BRANCH_NAME == 'dev') {
                         echo 'Deploy to staging'
