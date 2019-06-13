@@ -26,6 +26,7 @@ pipeline {
             steps {
                 script { 
                     echo 'Deploy to development.'
+                    echo BRANCH_NAME
                 }
             }
         }
