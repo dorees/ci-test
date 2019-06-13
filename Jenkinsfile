@@ -41,7 +41,7 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                script { 
+                sshagent (credentials: ['wp-engine-deployment-key']) {
                     echo 'Deploy to staging.'
                 }
             }
@@ -57,37 +57,6 @@ pipeline {
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // stage('Deployment') {
-        //     steps {
-        //         script { 
-        //             if (env.BRANCH_NAME != 'master' || env.BRANCH_NAME != 'dev') {
-        //                 echo 'Deploy to development'
-        //                 echo env.BRANCH_NAME
-
-        //             } else if (env.BRANCH_NAME == 'dev') {
-        //                 echo 'Deploy to staging'
-
-        //             } else if (env.BRANCH_NAME == 'master') {
-        //                 echo 'Deploy to production'
-
-        //             }
-        //         }
-        //     }
-        // }
     }
 
     post {
