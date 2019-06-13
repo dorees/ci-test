@@ -42,7 +42,9 @@ pipeline {
             }
             steps {
                 sshagent (credentials: ['wp-engine-deployment-key']) {
-                    echo 'Deploy to staging.'
+                    script {
+                        echo 'Deploy to staging.'
+                    }
                 }
             }
         }
