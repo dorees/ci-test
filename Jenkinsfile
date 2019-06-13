@@ -19,6 +19,17 @@ pipeline {
             }
         }
 
+        stage('Deploy to development') {
+            when {
+                expression { BRANCH_NAME != /(master|dev)/ }
+            }
+            steps {
+                script { 
+                    echo 'Deploy to development.'
+                }
+            }
+        }
+
         stage('Deploy to staging') {
             when {
                 branch 'dev'
