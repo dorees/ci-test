@@ -1,2 +1,2 @@
 # ci-test
-Testing Jenkins filde changes without disrupting Studios workflow.
+Testing Jenkins filde changes without disrupting Studios workflow
