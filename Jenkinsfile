@@ -21,7 +21,7 @@ pipeline {
 
         stage('Deploy to development') {
             when {
-                expression { BRANCH_NAME !=~ /(master|dev)/ }
+                expression { env.BRANCH_NAME != /(master|dev)/ }
             }
             steps {
                 script { 
