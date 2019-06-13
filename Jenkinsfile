@@ -32,7 +32,7 @@ pipeline {
 
         stage('Deploy to production') {
             when {
-                branch 'production'
+                branch 'master'
             }
             steps {
                 script { 
