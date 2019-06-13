@@ -19,23 +19,58 @@ pipeline {
             }
         }
 
-        stage('Deployment') {
+        stage('Deploy to staging') {
+            when {
+                branch 'dev'
+            }
             steps {
                 script { 
-                    if (env.BRANCH_NAME != 'master' || env.BRANCH_NAME != 'dev') {
-                        echo 'Deploy to development'
-                        echo env.BRANCH_NAME
-
-                    } else if (env.BRANCH_NAME == 'dev') {
-                        echo 'Deploy to staging'
-
-                    } else if (env.BRANCH_NAME == 'master') {
-                        echo 'Deploy to production'
-
-                    }
+                    echo 'Deploy to staging.'
                 }
             }
         }
+
+        stage('Deploy to production') {
+            when {
+                branch 'production'
+            }
+            steps {
+                script { 
+                    echo 'Deploy to production.'
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // stage('Deployment') {
+        //     steps {
+        //         script { 
+        //             if (env.BRANCH_NAME != 'master' || env.BRANCH_NAME != 'dev') {
+        //                 echo 'Deploy to development'
+        //                 echo env.BRANCH_NAME
+
+        //             } else if (env.BRANCH_NAME == 'dev') {
+        //                 echo 'Deploy to staging'
+
+        //             } else if (env.BRANCH_NAME == 'master') {
+        //                 echo 'Deploy to production'
+
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     post {
