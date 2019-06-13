@@ -21,12 +21,16 @@ pipeline {
 
         stage('Deploy to development') {
             when {
-                expression { env.BRANCH_NAME != /(master|dev)/ }
+                not {
+                    anyOf {
+                        branch 'master';
+                        branch 'dev'
+                    }
+                }
             }
             steps {
                 script { 
                     echo 'Deploy to development.'
-                    echo BRANCH_NAME
                 }
             }
         }
